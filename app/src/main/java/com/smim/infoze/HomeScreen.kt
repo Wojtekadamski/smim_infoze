@@ -86,7 +86,7 @@ fun HomeScreen(navController: NavController) {
             ) {
                 favoriteCreators.forEach { creator ->
                     CreatorAvatar(creator = creator, isFavorite = true) {
-                        // w przyszłości otwieranie profilu
+                        navController.navigate("creator_profile/${creator.id}")
                     }
                 }
             }
@@ -137,7 +137,11 @@ fun HomeScreen(navController: NavController) {
                 Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                ResourceButton("News & Info", Icons.Default.Info) { navController.navigate("news") }
+                ResourceButton(
+                    title = "Artykuły",
+                    icon = Icons.Default.Info,
+                    onClick = { navController.navigate("articles") }
+                )
                 ResourceButton("Podcasty", Icons.Default.Phone) { navController.navigate("podcast") }
                 ResourceButton("Raporty", Icons.Default.ShoppingCart) { navController.navigate("report") }
             }

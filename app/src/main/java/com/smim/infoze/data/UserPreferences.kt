@@ -83,6 +83,14 @@ class UserPreferences(context: Context) {
         return prefs.getStringSet("favorites_$email", emptySet()) ?: emptySet()
     }
 
+    fun countUsersWithFavorite(context: Context, creatorId: String): Int {
+        val allPrefs = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE).all
+        return allPrefs.entries.count { (key, value) ->
+            key.startsWith("favorites_") && value is Set<*> && value.contains(creatorId)
+        }
+    }
+
+
 
 
 
