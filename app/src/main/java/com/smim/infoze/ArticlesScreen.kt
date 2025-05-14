@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.smim.infoze.data.UserPreferences
 import com.smim.infoze.model.Material
+import com.smim.infoze.ui.component.BottomNavigationBar
 import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -40,7 +41,8 @@ fun ArticlesScreen(navController: NavController) {
             TopAppBar(
                 title = { Text("Artykuły") }
             )
-        }
+        },
+        bottomBar = { BottomNavigationBar(navController) }
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             if (favoriteArticles.isNotEmpty()) {

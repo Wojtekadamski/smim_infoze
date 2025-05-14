@@ -5,9 +5,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.smim.infoze.ui.theme.GreenDark
@@ -18,20 +20,34 @@ fun BottomNavigationBar(navController: NavController) {
         containerColor = GreenDark,
         tonalElevation = 4.dp
     ) {
-        NavigationBarItem(
-            icon = { Icon(Icons.Default.ArrowBack, contentDescription = "Back") },
-            selected = false,
-            onClick = { navController.popBackStack() }
+
+        val itemColors = NavigationBarItemDefaults.colors(
+            selectedIconColor = Color.White,
+            unselectedIconColor = Color.White,
+            selectedTextColor = Color.White,
+            unselectedTextColor = Color.White,
+            indicatorColor = GreenDark // brak zmiany tła przy aktywnym
         )
         NavigationBarItem(
-            icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
-            selected = true,
-            onClick = { /* TODO */ }
+            selected = false,
+            onClick = { navController.popBackStack() },
+            icon = { Icon(Icons.Filled.ArrowBack, contentDescription = "Wstecz") },
+            label = { Text("Wstecz") },
+            colors = itemColors
         )
         NavigationBarItem(
-            icon = { Icon(Icons.Default.Menu, contentDescription = "Menu") },
             selected = false,
-            onClick = { /* TODO */ }
+            onClick = { navController.navigate("home") },
+            icon = { Icon(Icons.Filled.Home, contentDescription = "Strona główna") },
+            label = { Text("Home") },
+            colors = itemColors
+        )
+        NavigationBarItem(
+            selected = false,
+            onClick = { navController.navigate("profile") },
+            icon = { Icon(Icons.Filled.Person, contentDescription = "Profil") },
+            label = { Text("Profil") },
+            colors = itemColors
         )
     }
 }

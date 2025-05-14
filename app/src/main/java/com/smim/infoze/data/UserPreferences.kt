@@ -90,6 +90,15 @@ class UserPreferences(context: Context) {
         }
     }
 
+    fun saveAvatarUri(email: String, uri: String) {
+        prefs.edit().putString("avatar_$email", uri).apply()
+    }
+
+    fun getAvatarUri(email: String): String? {
+        return prefs.getString("avatar_$email", null)
+    }
+
+
 
 
 
