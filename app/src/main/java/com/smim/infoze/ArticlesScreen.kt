@@ -3,6 +3,7 @@ package com.smim.infoze
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -47,14 +48,18 @@ fun ArticlesScreen(navController: NavController) {
         Column(modifier = Modifier.padding(padding)) {
             if (favoriteArticles.isNotEmpty()) {
                 Text("Ulubione", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(16.dp))
-                favoriteArticles.forEach {
-                    ArticleCard(it)
+                favoriteArticles.forEach { article ->
+                    ArticleCard(article) {
+                        navController.navigate("articleDetail/${article.id}")
+                    }
                 }
             }
 
             Text("Wszystkie", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(16.dp))
-            articles.forEach {
-                ArticleCard(it)
+            articles.forEach { article ->
+                ArticleCard(article) {
+                    navController.navigate("articleDetail/${article.id}")
+                }
             }
         }
     }
@@ -62,12 +67,13 @@ fun ArticlesScreen(navController: NavController) {
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun ArticleCard(article: Material) {
+fun ArticleCard(article: Material, onClick: () -> Unit) {
     val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
+            .clickable { onClick() }
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Image(

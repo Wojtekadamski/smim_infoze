@@ -1,6 +1,9 @@
 package com.smim.infoze
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -21,9 +24,11 @@ import com.smim.infoze.data.AppDatabase
 import com.smim.infoze.data.UserPreferences
 import com.smim.infoze.model.Creator
 import com.smim.infoze.model.Material
+import com.smim.infoze.ui.component.BottomNavigationBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CreatorProfileScreen(creatorId: String, navController: NavController) {
@@ -53,7 +58,8 @@ fun CreatorProfileScreen(creatorId: String, navController: NavController) {
                 title = { Text(creator.name) },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.White)
             )
-        }
+        },
+        bottomBar = { BottomNavigationBar(navController) }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -109,6 +115,7 @@ fun CreatorProfileScreen(creatorId: String, navController: NavController) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 8.dp)
+                            .clickable { navController.navigate("articleDetail/${material.id}") }
                     ) {
                         Row(modifier = Modifier.padding(16.dp)) {
                             Image(

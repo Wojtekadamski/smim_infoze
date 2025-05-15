@@ -14,6 +14,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.smim.infoze.data.AppDatabase
 import com.smim.infoze.data.UserPreferences
+import com.smim.infoze.ui.component.BottomNavigationBar
 import com.smim.infoze.viewmodel.UserViewModel
 import com.smim.infoze.viewmodel.ViewModelFactory
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +40,8 @@ fun EditProfileScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(title = { Text("Edycja profilu") })
-        }
+        },
+        bottomBar = { BottomNavigationBar(navController) }
     ) { padding ->
         Column(
             modifier = Modifier

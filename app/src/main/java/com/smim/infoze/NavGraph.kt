@@ -37,6 +37,11 @@ fun InfoZENavGraph(navController: NavHostController) {
         composable("edit_profile") {
             EditProfileScreen(navController = navController)
         }
+        composable("articleDetail/{articleId}") { backStackEntry ->
+            val articleId = backStackEntry.arguments?.getString("articleId") ?: ""
+            ArticleDetailScreen(articleId = articleId, navController = navController)
+        }
+
 
 
     }

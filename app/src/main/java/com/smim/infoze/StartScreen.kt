@@ -48,7 +48,7 @@ fun StartScreen(navController: NavController) {
 
         // Tytuł
         Text(
-            text = "InfoZE",
+            text = "InfOZE",
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold,
             color = GreenDark
