@@ -38,7 +38,7 @@ fun HomeScreen(navController: NavController) {
         "Jedna turbina wiatrowa o mocy 3 MW może zasilić 1500 domów.",
         "Panele słoneczne są w stanie pracować nawet w pochmurne dni.",
         "Energia wodna to najstarsza forma energii odnawialnej.",
-        "Biomasa może być źródłem paliwa do ogrzewania domów."
+        "Biomasa może być źródłem paliwa do ogrzewania domów.",
     )
     var currentFact by remember { mutableStateOf(facts.random()) }
     var showDialog by remember { mutableStateOf(false) }

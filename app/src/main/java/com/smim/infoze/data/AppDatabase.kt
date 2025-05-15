@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.smim.infoze.data.User
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -19,9 +21,38 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "infoze_database"
-                ).build()
+                ).addMigrations(MIGRATION_1_2)
+                    .build()
                 INSTANCE = instance
                 instance
+            }
+        }
+
+        val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // Usuń duplikaty email
+                database.execSQL("""
+            DELETE FROM users
+            WHERE id NOT IN (
+                SELECT MIN(id)
+                FROM users
+                GROUP BY email
+            )
+        """)
+
+                // Usuń duplikaty username
+                database.execSQL("""
+            DELETE FROM users
+            WHERE id NOT IN (
+                SELECT MIN(id)
+                FROM users
+                GROUP BY username
+            )
+        """)
+
+                // Teraz można bezpiecznie dodać indeksy
+                database.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS index_users_email ON users(email)")
+                database.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS index_users_username ON users(username)")
             }
         }
     }

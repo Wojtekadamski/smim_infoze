@@ -32,9 +32,11 @@ class UserPreferences(context: Context) {
             putString("username", user.username)
             putString("email", user.email)
             putString("password", user.password)
+            putString("logged_in_user", user.email)
             apply()
         }
     }
+
 
     fun getSavedUserData(): User? {
         val username = prefs.getString("username", null)

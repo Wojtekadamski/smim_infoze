@@ -121,7 +121,7 @@ fun UserProfileScreen(navController: NavController) {
                     Text("Ochrona prywatności")
                 }
                 Button(
-                    onClick = { /* TODO */ },
+                    onClick = { navController.navigate("edit_profile") },
                     modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
                 ) {
                     Text("Ustawienia profilu")

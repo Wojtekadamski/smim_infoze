@@ -34,6 +34,10 @@ fun InfoZENavGraph(navController: NavHostController) {
             ArticlesScreen(navController)
         }
         composable("profile") { UserProfileScreen(navController) }
+        composable("edit_profile") {
+            EditProfileScreen(navController = navController)
+        }
+
 
     }
 }
