@@ -7,15 +7,16 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.smim.infoze.screen.ArticleDetailScreen
-import com.smim.infoze.screen.ArticlesScreen
-import com.smim.infoze.screen.CreatorProfileScreen
-import com.smim.infoze.screen.EditProfileScreen
-import com.smim.infoze.screen.HomeScreen
-import com.smim.infoze.screen.LoginScreen
-import com.smim.infoze.screen.RegisterScreen
-import com.smim.infoze.screen.StartScreen
-import com.smim.infoze.screen.UserProfileScreen
+import com.smim.infoze.ui.screen.ArticleDetailScreen
+import com.smim.infoze.ui.screen.ArticlesScreen
+import com.smim.infoze.ui.screen.CreatorProfileScreen
+import com.smim.infoze.ui.screen.EditProfileScreen
+import com.smim.infoze.ui.screen.HomeScreen
+import com.smim.infoze.ui.screen.LoginScreen
+import com.smim.infoze.ui.screen.PodcastScreen
+import com.smim.infoze.ui.screen.RegisterScreen
+import com.smim.infoze.ui.screen.StartScreen
+import com.smim.infoze.ui.screen.UserProfileScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -50,11 +51,8 @@ fun InfoZENavGraph(navController: NavHostController) {
             val articleId = backStackEntry.arguments?.getString("articleId") ?: ""
             ArticleDetailScreen(articleId = articleId, navController = navController)
         }
-
-
-
-
-
-
+        composable("podcast") {
+            PodcastScreen(navController)
+        }
     }
 }

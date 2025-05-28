@@ -21,7 +21,16 @@ fun MediaCarousel(
     onVideoClick: () -> Unit
 ) {
     val context = LocalContext.current
-    val items = remember { if (videoResId != null) listOf(null) + imageResList else imageResList }
+    val items = remember {
+        when {
+            videoResId != null && imageResList.isNotEmpty() -> listOf(null) + imageResList
+            videoResId != null -> listOf(null)
+            else -> imageResList
+        }
+    }
+
+    // zabezpieczenie przed pustą listą
+    if (items.isEmpty()) return
 
     val pagerState = rememberPagerState { Int.MAX_VALUE }
 
@@ -33,9 +42,14 @@ fun MediaCarousel(
     ) { index ->
         val actualIndex = index % items.size
         val item = items[actualIndex]
+
         if (item == null && videoResId != null) {
             // Wideo
-            Box(modifier = Modifier.fillMaxSize().clickable { onVideoClick() }) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clickable { onVideoClick() }
+            ) {
                 VideoPlayer(context, videoResId)
             }
         } else {
@@ -45,7 +59,10 @@ fun MediaCarousel(
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxSize()
-                    .clickable { onImageClick(actualIndex - if (videoResId != null) 1 else 0) },
+                    .clickable {
+                        val imageIndex = actualIndex - if (videoResId != null) 1 else 0
+                        onImageClick(imageIndex)
+                    },
                 contentScale = ContentScale.Crop
             )
         }
