@@ -1,4 +1,4 @@
-package com.smim.infoze
+package com.smim.infoze.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.smim.infoze.R
 import com.smim.infoze.data.UserPreferences
 import com.smim.infoze.ui.theme.GreenDark
 

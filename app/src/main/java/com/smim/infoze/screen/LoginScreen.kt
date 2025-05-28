@@ -1,4 +1,4 @@
-package com.smim.infoze
+package com.smim.infoze.screen
 
 import android.app.Application
 import android.widget.Toast
@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.smim.infoze.R
 import com.smim.infoze.data.UserPreferences
 import com.smim.infoze.ui.theme.GreenDark
 import com.smim.infoze.viewmodel.UserViewModel

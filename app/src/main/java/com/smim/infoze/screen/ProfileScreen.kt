@@ -1,4 +1,4 @@
-package com.smim.infoze
+package com.smim.infoze.screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

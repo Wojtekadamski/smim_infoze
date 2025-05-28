@@ -7,6 +7,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.smim.infoze.screen.ArticleDetailScreen
+import com.smim.infoze.screen.ArticlesScreen
+import com.smim.infoze.screen.CreatorProfileScreen
+import com.smim.infoze.screen.EditProfileScreen
+import com.smim.infoze.screen.HomeScreen
+import com.smim.infoze.screen.LoginScreen
+import com.smim.infoze.screen.RegisterScreen
+import com.smim.infoze.screen.StartScreen
+import com.smim.infoze.screen.UserProfileScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

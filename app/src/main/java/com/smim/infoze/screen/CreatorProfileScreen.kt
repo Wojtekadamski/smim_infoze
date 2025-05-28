@@ -1,4 +1,4 @@
-package com.smim.infoze
+package com.smim.infoze.screen
 
 import android.os.Build
 import androidx.annotation.RequiresApi

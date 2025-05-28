@@ -1,4 +1,4 @@
-package com.smim.infoze
+package com.smim.infoze.screen
 
 import android.app.Application
 import android.widget.Toast
@@ -12,14 +12,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.smim.infoze.data.AppDatabase
 import com.smim.infoze.data.UserPreferences
 import com.smim.infoze.ui.component.BottomNavigationBar
 import com.smim.infoze.viewmodel.UserViewModel
 import com.smim.infoze.viewmodel.ViewModelFactory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

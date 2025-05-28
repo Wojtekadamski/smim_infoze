@@ -1,4 +1,4 @@
-package com.smim.infoze
+package com.smim.infoze.screen
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
@@ -24,7 +24,6 @@ import com.smim.infoze.ui.component.ResourceButton
 import com.smim.infoze.ui.component.CreatorAvatar
 import kotlinx.coroutines.delay
 import com.smim.infoze.ui.component.CreatorPickerDialog
-import kotlinx.coroutines.launch
 
 @Composable
 fun HomeScreen(navController: NavController) {
