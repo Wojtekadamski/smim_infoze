@@ -3,6 +3,8 @@ package com.smim.infoze.ui.screen
 import android.app.Application
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -35,8 +37,17 @@ fun EditProfileScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Edycja profilu") })
-        },
+            TopAppBar(
+                title = { Text("Edytuj profil") },
+                actions = {
+                    IconButton(onClick = {
+                        navController.navigate("accessibility_settings")
+                    }) {
+                        Icon(Icons.Default.Settings, contentDescription = "Ustawienia dostępności")
+                    }
+                }
+            )
+                 },
         bottomBar = { BottomNavigationBar(navController) }
     ) { padding ->
         Column(

@@ -100,6 +100,27 @@ class UserPreferences(context: Context) {
         return prefs.getString("avatar_$email", null)
     }
 
+    fun saveAccessibilitySettings(email: String, darkMode: Boolean, highContrast: Boolean, fontScale: Float) {
+        prefs.edit().apply {
+            putBoolean("dark_mode_$email", darkMode)
+            putBoolean("high_contrast_$email", highContrast)
+            putFloat("font_scale_$email", fontScale)
+            apply()
+        }
+    }
+
+    fun getDarkMode(email: String): Boolean {
+        return prefs.getBoolean("dark_mode_$email", false)
+    }
+
+    fun getHighContrast(email: String): Boolean {
+        return prefs.getBoolean("high_contrast_$email", false)
+    }
+
+    fun getFontScale(email: String): Float {
+        return prefs.getFloat("font_scale_$email", 1.0f)
+    }
+
 
 
 

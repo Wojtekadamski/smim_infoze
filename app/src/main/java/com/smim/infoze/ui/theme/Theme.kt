@@ -37,20 +37,31 @@ private val DarkColorScheme = darkColorScheme(
 fun InfozeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
+    highContrast: Boolean = false,
+    fontScale: Float = 1.0f,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val baseColorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
+    val colorScheme = if (highContrast) {
+        baseColorScheme.copy(
+            background = Color.Black,
+            onBackground = Color.White,
+            surface = Color.DarkGray,
+            onSurface = Color.White,
+            primary = Color.Yellow
+        )
+    } else baseColorScheme
+
+    val scaledTypography = Typography.copy(
+        bodyLarge = Typography.bodyLarge.copy(fontSize = Typography.bodyLarge.fontSize * fontScale),
+        bodyMedium = Typography.bodyMedium.copy(fontSize = Typography.bodyMedium.fontSize * fontScale),
+        bodySmall = Typography.bodySmall.copy(fontSize = Typography.bodySmall.fontSize * fontScale)
+    )
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = scaledTypography,
         content = content
     )
 }
