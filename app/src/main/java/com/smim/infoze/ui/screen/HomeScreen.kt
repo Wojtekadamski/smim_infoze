@@ -124,6 +124,7 @@ fun HomeScreen(navController: NavController) {
                 Text(
                     currentFact,
                     modifier = Modifier.padding(16.dp),
+                    color = MaterialTheme.colorScheme.onSurface,
                     style = MaterialTheme.typography.bodyMedium
                 )
             }

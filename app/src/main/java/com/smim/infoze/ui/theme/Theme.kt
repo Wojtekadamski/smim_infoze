@@ -28,9 +28,9 @@ private val DarkColorScheme = darkColorScheme(
     background = GreenDark,
     onBackground = TextWhite,
     surface = GreenDark,
-    onSurface = TextWhite,
+    onSurface = TextDark,
     error = ErrorRed,
-    onError = TextWhite
+    onError = TextWhite,
 )
 
 @Composable
@@ -48,7 +48,7 @@ fun InfozeTheme(
             background = Color.Black,
             onBackground = Color.White,
             surface = Color.DarkGray,
-            onSurface = Color.White,
+            onSurface = Color.Black,
             primary = Color.Yellow
         )
     } else baseColorScheme
