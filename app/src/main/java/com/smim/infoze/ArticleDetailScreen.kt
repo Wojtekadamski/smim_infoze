@@ -9,6 +9,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -19,7 +23,10 @@ import androidx.navigation.NavController
 import com.smim.infoze.model.Creator
 import com.smim.infoze.model.Material
 import com.smim.infoze.ui.component.BottomNavigationBar
+import com.smim.infoze.ui.component.FullScreenImage
 import java.time.format.DateTimeFormatter
+import com.smim.infoze.ui.component.MediaCarousel
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,10 +35,13 @@ fun ArticleDetailScreen(articleId: String, navController: NavController) {
     val context = LocalContext.current
     val allMaterials = Material.sampleMaterials()
     val allCreators = Creator.sampleCreators()
+    var fullScreenImageIndex by remember { mutableStateOf<Int?>(null) }
+    var fullScreenVideoVisible by remember { mutableStateOf(false) }
 
     val material = allMaterials.find { it.id == articleId } ?: return
     val creator = allCreators.find { it.id == material.creatorId }
-
+    val imageResIds = material.imageResList
+    val videoResId = material.videoResId
     val dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
 
     Scaffold(
@@ -50,6 +60,23 @@ fun ArticleDetailScreen(articleId: String, navController: NavController) {
                 .verticalScroll(rememberScrollState())
                 .fillMaxSize()
         ) {
+
+            MediaCarousel(
+                imageResList = imageResIds,
+                videoResId = videoResId,
+                onImageClick = { clickedIndex ->
+                    fullScreenImageIndex = clickedIndex
+                },
+                onVideoClick = {
+                    fullScreenVideoVisible = true
+                }
+            )
+
+
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+
             Text(
                 text = material.title,
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
@@ -121,6 +148,23 @@ fun ArticleDetailScreen(articleId: String, navController: NavController) {
                 style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray),
                 modifier = Modifier.padding(top = 4.dp)
             )
+
+
+            fullScreenImageIndex?.let { index ->
+                FullScreenImage(
+                    imageResId = imageResIds[index],
+                    onClose = { fullScreenImageIndex = null }
+                )
+            }
+
+
+
+
         }
+
+
+
+
+
     }
 }

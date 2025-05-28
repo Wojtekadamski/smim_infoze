@@ -20,7 +20,9 @@ data class Material(
     val content: String,
     val type: MaterialType,
     val thumbnailRes: Int,
-    val publishDate: LocalDate
+    val publishDate: LocalDate,
+    val imageResList: List<Int> = emptyList(),
+    val videoResId: Int? = null
 ) {
     companion object {
         @RequiresApi(Build.VERSION_CODES.O)
@@ -37,7 +39,8 @@ data class Material(
                         "Nunc eleifend condimentum odio quis tempor. Sed porttitor ante at justo tristique tincidunt. Aenean pulvinar lacus et nulla scelerisque, eget malesuada mi placerat. Nulla interdum justo nec cursus lobortis. Proin lorem enim, tempus vitae eros ut, aliquet ultricies est. Duis consectetur nunc mattis metus vestibulum, ac posuere erat vulputate. Nunc venenatis mollis lorem nec hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent varius sapien blandit lorem semper iaculis. Morbi fringilla enim non pharetra rhoncus. Proin odio augue, pretium non dolor ullamcorper, mollis facilisis felis. In et sodales nunc.",
                 type = MaterialType.ARTICLE,
                 thumbnailRes = R.drawable.placeholder,
-                publishDate = LocalDate.of(2025, 5, 13)
+                publishDate = LocalDate.of(2025, 5, 13),
+                imageResList = listOf(R.drawable.solar1, R.drawable.solar2, R.drawable.solar3),
             ),
             Material(
                 id = "m2",
@@ -65,7 +68,8 @@ data class Material(
                         "Nunc eleifend condimentum odio quis tempor. Sed porttitor ante at justo tristique tincidunt. Aenean pulvinar lacus et nulla scelerisque, eget malesuada mi placerat. Nulla interdum justo nec cursus lobortis. Proin lorem enim, tempus vitae eros ut, aliquet ultricies est. Duis consectetur nunc mattis metus vestibulum, ac posuere erat vulputate. Nunc venenatis mollis lorem nec hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent varius sapien blandit lorem semper iaculis. Morbi fringilla enim non pharetra rhoncus. Proin odio augue, pretium non dolor ullamcorper, mollis facilisis felis. In et sodales nunc.",
                 type = MaterialType.VIDEO,
                 thumbnailRes = R.drawable.placeholder,
-                publishDate = LocalDate.of(2025, 4, 13)
+                publishDate = LocalDate.of(2025, 4, 13),
+                videoResId = R.raw.reactor1
             )
         )
     }
