@@ -34,16 +34,18 @@ fun EditProfileScreen(navController: NavController) {
     var showUsernameField by remember { mutableStateOf(false) }
     var showEmailField by remember { mutableStateOf(false) }
     var showPasswordField by remember { mutableStateOf(false) }
+    val isHighContrast = MaterialTheme.colorScheme.primary == Color.Yellow
+
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edytuj profil") },
+                title = { Text("Edytuj profil", color = if (isHighContrast) Color.White else MaterialTheme.colorScheme.onPrimary) },
                 actions = {
                     IconButton(onClick = {
                         navController.navigate("accessibility_settings")
                     }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Ustawienia dostępności")
+                        Icon(Icons.Default.Settings, contentDescription = "Ustawienia dostępności", tint = if (isHighContrast) Color.White else MaterialTheme.colorScheme.onPrimary)
                     }
                 }
             )

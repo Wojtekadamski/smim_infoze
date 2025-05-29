@@ -15,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -91,9 +92,11 @@ fun UserProfileScreen(navController: NavController) {
                             contentDescription = "Default Avatar"
                         )
                     }
+                    val isHighContrast = MaterialTheme.colorScheme.primary == Color.Yellow
+
                     Spacer(Modifier.height(8.dp))
-                    Text(text = user?.username ?: "", color = MaterialTheme.colorScheme.onPrimary, fontWeight = FontWeight.Bold)
-                    Text(text = user?.email ?: "", color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f), fontSize = MaterialTheme.typography.bodySmall.fontSize)
+                    Text(text = user?.username ?: "", color = if (isHighContrast) Color.White else MaterialTheme.colorScheme.onPrimary, fontWeight = FontWeight.Bold)
+                    Text(text = user?.email ?: "", color = if (isHighContrast) Color.White else MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f), fontSize = MaterialTheme.typography.bodySmall.fontSize)
                 }
             }
 

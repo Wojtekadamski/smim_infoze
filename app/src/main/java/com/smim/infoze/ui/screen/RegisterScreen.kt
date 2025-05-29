@@ -12,11 +12,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.smim.infoze.R
 import com.smim.infoze.data.User
 import com.smim.infoze.viewmodel.UserViewModel
 import com.smim.infoze.viewmodel.ViewModelFactory
@@ -68,10 +73,17 @@ fun RegisterScreen(navController: NavController) {
 
             Text("Welcome to", fontSize = 20.sp, color = Color.DarkGray)
             Text(
-                "InfoZE",
-                fontSize = 36.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = Color(0xFF154C1B)
+                text = "InfOZE",
+                modifier = Modifier
+                    .width(278.dp)
+                    .height(82.dp),
+                style = TextStyle(
+                    fontSize = 64.sp,
+                    fontFamily = FontFamily(Font(R.font.rammetto_one)),
+                    fontWeight = FontWeight.W400,
+                    color = Color(0xFF1D4110),
+                    textAlign = TextAlign.Center
+                )
             )
             Text(
                 text = "Dołącz do społeczności i bądź na bieżąco!",

@@ -1,8 +1,11 @@
 package com.smim.infoze.ui.screen
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Phone
@@ -11,12 +14,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.smim.infoze.R
 import com.smim.infoze.data.UserPreferences
 import com.smim.infoze.model.Creator
 import com.smim.infoze.ui.component.BottomNavigationBar
@@ -70,6 +76,16 @@ fun HomeScreen(navController: NavController) {
                 .padding(padding)
                 .padding(16.dp)
         ) {
+
+            Image(
+                painter = painterResource(id = R.drawable.shapes),
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.Start)
+                    .padding(top = 8.dp)
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Witaj, $username!",
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
@@ -117,33 +133,60 @@ fun HomeScreen(navController: NavController) {
 
             Spacer(Modifier.height(8.dp))
 
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9))
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(61.dp)
+                    .shadow(
+                        elevation = 4.dp,
+                        ambientColor = Color(0xFF528265),
+                        spotColor = Color(0xFF528265),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                    .background(Color.White, shape = RoundedCornerShape(12.dp))
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
-                    currentFact,
-                    modifier = Modifier.padding(16.dp),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    style = MaterialTheme.typography.bodyMedium
+                    text = currentFact,
+                    color = Color(0xFF1D4110),
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.Center
                 )
             }
 
             Spacer(Modifier.height(16.dp))
 
-            Text("Nasze zasoby", style = MaterialTheme.typography.titleMedium)
+            Text(
+                "Nasze zasoby",
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontWeight = FontWeight.SemiBold
+                ),
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
 
             Row(
-                Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 ResourceButton(
-                    title = "Artykuły",
+                    title = "News & Info",
                     icon = Icons.Default.Info,
+                    backgroundColor = Color(0xFF07441F),
                     onClick = { navController.navigate("articles") }
                 )
-                ResourceButton("Podcasty", Icons.Default.Phone) { navController.navigate("podcast") }
-                ResourceButton("Raporty", Icons.Default.ShoppingCart) { navController.navigate("report") }
+                ResourceButton(
+                    title = "Podcasty",
+                    icon = Icons.Default.Phone,
+                    backgroundColor = Color(0xFF07441F),
+                    onClick = { navController.navigate("podcast") }
+                )
+                ResourceButton(
+                    title = "Raporty i\nAnalizy",
+                    icon = Icons.Default.ShoppingCart,
+                    backgroundColor = Color(0xFF07441F),
+                    onClick = { navController.navigate("report") }
+                )
             }
 
             Spacer(Modifier.height(24.dp))

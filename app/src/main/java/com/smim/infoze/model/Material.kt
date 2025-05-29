@@ -78,8 +78,8 @@ data class Material(
             Material(
                 id = "m4",
                 creatorId = "2",
-                title = "Podcast o reaktorach",
-                description = "Rozmowa z ekspertem o wpływie energii na politykę międzynarodową.",
+                title = "Podcast o OZE",
+                description = "Rozmowa z ekspertem o Energii odnawialnej.",
                 content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet aliquet massa. Aliquam nec orci sit amet dolor porttitor faucibus sit amet ut tortor. Donec magna leo, molestie sit amet arcu vel, gravida sagittis ante. Integer consequat lobortis arcu vitae fermentum. Praesent felis nibh, suscipit a nibh sit amet, tempus aliquet quam. Sed mi purus, condimentum nec lorem ac, placerat pulvinar lorem. Suspendisse tincidunt cursus suscipit. Phasellus arcu sem, cursus quis hendrerit at, lobortis at nunc. Curabitur iaculis iaculis tempus. Proin tempus nibh vitae turpis vestibulum mollis. Mauris hendrerit ut mi nec sagittis. Ut eu mi nec lectus ultricies tempus ac at felis.\n" +
                         "\n" +
                         "Ut eu varius lectus. Morbi enim lorem, mattis non ex vitae, condimentum lobortis quam. Duis eget lorem tempor, imperdiet mauris id, rutrum ante. Nulla enim elit, elementum sit amet lorem at, aliquam dapibus mauris. Integer sollicitudin luctus rutrum. Ut finibus massa ut accumsan molestie. Cras sit amet euismod ipsum.\n" +
@@ -88,7 +88,7 @@ data class Material(
                 type = MaterialType.AUDIO,
                 thumbnailRes = R.drawable.placeholder,
                 publishDate = LocalDate.of(2025, 4, 13),
-                audioResId = R.raw.podcast1
+                audioResId = R.raw.podcast3
 
             ),
             Material(

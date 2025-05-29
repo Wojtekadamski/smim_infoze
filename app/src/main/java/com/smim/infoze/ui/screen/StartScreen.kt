@@ -1,6 +1,7 @@
 package com.smim.infoze.ui.screen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -8,9 +9,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -31,52 +37,40 @@ fun StartScreen(navController: NavController) {
             }
         }
     }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(color = Color(0xFF093B11)) // ciemnozielone tło
+            .padding(horizontal = 32.dp, vertical = 48.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
+        Spacer(modifier = Modifier.height(24.dp))
+
         // Logo
         Image(
-            painter = painterResource(id = R.drawable.logo), // upewnij się że plik nazywa się `logo.png` w res/drawable
+            painter = painterResource(id = R.drawable.startlogo), // Twój złoty znak graficzny
             contentDescription = "Logo",
             modifier = Modifier
-                .height(140.dp)
-                .padding(bottom = 32.dp)
+                .fillMaxWidth(0.9f)
+                .padding(bottom = 16.dp)
         )
 
-        // Tytuł
-        Text(
-            text = "InfOZE",
-            fontSize = 36.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenDark
-        )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(48.dp))
 
-        // Podtytuł
-        Text(
-            text = "Wiedza o energetyce odnawialnej zawsze pod ręką",
-            fontSize = 16.sp,
-            color = MaterialTheme.colorScheme.onBackground,
-            modifier = Modifier.padding(horizontal = 16.dp),
-            lineHeight = 22.sp
-        )
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        // Przycisk „Zaczynamy”
+        // Przycisk Zaczynamy!
         Button(
             onClick = { navController.navigate("login") },
-            colors = ButtonDefaults.buttonColors(containerColor = GreenDark),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF35D07F)), // jasnozielony z Figma
             modifier = Modifier
                 .fillMaxWidth()
-                .height(52.dp)
+                .height(50.dp)
         ) {
-            Text(text = "Zaczynamy", fontSize = 16.sp)
+            Text(text = "Zaczynamy!", fontSize = 16.sp, color = Color.White)
         }
+
+        Spacer(modifier = Modifier.height(24.dp))
     }
 }

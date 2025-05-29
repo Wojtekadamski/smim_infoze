@@ -20,6 +20,7 @@ import com.smim.infoze.ui.screen.HomeScreen
 import com.smim.infoze.ui.screen.LoginScreen
 import com.smim.infoze.ui.screen.PodcastScreen
 import com.smim.infoze.ui.screen.RegisterScreen
+import com.smim.infoze.ui.screen.ReportsScreen
 import com.smim.infoze.ui.screen.StartScreen
 import com.smim.infoze.ui.screen.UserProfileScreen
 import com.smim.infoze.ui.screen.settings.AccessibilitySettingsScreen
@@ -75,9 +76,7 @@ fun InfoZENavGraph(navController: NavHostController, userEmail: String?,
         composable("register") { RegisterScreen(navController) }
         composable("login") { LoginScreen(navController) }
         composable("home") { HomeScreen(navController) }
-        composable("news") { /* TODO: News screen */ }
-        composable("podcast") { /* TODO: Podcast screen */ }
-        composable("report") { /* TODO: Report screen */ }
+        composable("report") { ReportsScreen(navController) }
         composable("creator_profile/{creatorId}") { backStackEntry ->
             val creatorId = backStackEntry.arguments?.getString("creatorId") ?: ""
             CreatorProfileScreen(creatorId = creatorId, navController = navController)

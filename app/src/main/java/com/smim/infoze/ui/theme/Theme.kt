@@ -49,7 +49,8 @@ fun InfozeTheme(
             onBackground = Color.White,
             surface = Color.DarkGray,
             onSurface = Color.Black,
-            primary = Color.Yellow
+            primary = Color.Yellow,
+            onPrimary = Color.Black,
         )
     } else baseColorScheme
 
