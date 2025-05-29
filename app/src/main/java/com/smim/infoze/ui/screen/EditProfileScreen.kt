@@ -40,12 +40,12 @@ fun EditProfileScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edytuj profil", color = if (isHighContrast) Color.White else MaterialTheme.colorScheme.onPrimary) },
+                title = { Text("Edytuj profil", color = if (isHighContrast) Color.White else MaterialTheme.colorScheme.onSecondary) },
                 actions = {
                     IconButton(onClick = {
                         navController.navigate("accessibility_settings")
                     }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Ustawienia dostępności", tint = if (isHighContrast) Color.White else MaterialTheme.colorScheme.onPrimary)
+                        Icon(Icons.Default.Settings, contentDescription = "Ustawienia dostępności", tint = if (isHighContrast) Color.White else MaterialTheme.colorScheme.onSecondary)
                     }
                 }
             )
